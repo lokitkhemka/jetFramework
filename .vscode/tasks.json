@@ -1,0 +1,50 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Clang Build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"-std=c++20",
+				"${workspaceFolder}\\src\\jet\\*.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\app.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+		{
+			"type": "cppbuild",
+			"label": "Clang Test Build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${workspaceFolder}\\src\\Tests\\*.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\Tests\\tests.exe",
+				"-I${workspaceFolder}\\src\\external\\googletest\\googletest\\include",
+				"-I${workspaceFolder}\\src\\jet",
+				"-L${workspaceFolder}\\src\\external\\googletest\\build\\lib\\Release",
+				"-lgtest", "-lgtest_main"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		}
+	]
+}
