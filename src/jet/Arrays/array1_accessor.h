@@ -300,7 +300,7 @@ namespace jet
     template<typename T>
     size_t ArrayAccessor<T,1>::Size() const
     {
-        return _data;
+        return _size;
     }
 
     template<typename T>
@@ -372,8 +372,8 @@ namespace jet
 
     template <typename T>
     ConstArrayAccessor<T, 1>::ConstArrayAccessor(const ArrayAccessor<T, 1>& other) {
-        _size = other.size();
-        _data = other.data();
+        _size = other.Size();
+        _data = other.Data();
     }
 
     template <typename T>
