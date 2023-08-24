@@ -8,3 +8,13 @@
 #else
 #   define JET_ASSERT(x)
 #endif
+
+
+#if defined(_WIN32) || defined(_WIN64)
+    #define JET_WINDOWS
+#endif
+
+#ifdef JET_WINDOWS
+    #include <BaseTsd.h>
+    typedef SSIZE_T ssize_t;
+#endif
