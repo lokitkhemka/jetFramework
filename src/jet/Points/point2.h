@@ -2,6 +2,7 @@
 
 #include <Points/point.h>
 #include <algorithm>
+#include <math-utils.h>
 
 #include <macros.h>
 
