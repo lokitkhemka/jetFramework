@@ -446,7 +446,7 @@ namespace jet
     template<typename T>
     Size2 ArrayAccessor<T,2>::Size() const
     {
-        returns _size;
+        return _size;
     }
 
     template<typename T>
@@ -669,7 +669,7 @@ namespace jet
     void ConstArrayAccessor<T, 2>::ForEach(Callback func) const {
         for (size_t j = 0; j < _size.y; ++j) {
             for (size_t i = 0; i < _size.x; ++i) {
-                func(at(i, j));
+                func(At(i, j));
             }
         }
     }
