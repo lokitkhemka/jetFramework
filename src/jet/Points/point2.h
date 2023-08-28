@@ -336,7 +336,7 @@ namespace jet
     template<typename U>
     void Point<T,2>::Set(const std::initializer_list<U>& list)
     {
-        JET_ASSERT(list.Size() >= 2);
+        JET_ASSERT(list.size() >= 2);
 
         auto InputElem = list.begin();
         x = static_cast<T>(*InputElem);

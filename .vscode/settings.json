@@ -51,7 +51,10 @@
         "xstddef": "cpp",
         "xstring": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "xtree": "cpp"
     },
     "cmake.sourceDirectory": "D:/CPPProjects/Jet Framework/src/Tests",
     "C_Cpp.default.compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe"
