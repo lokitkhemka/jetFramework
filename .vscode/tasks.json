@@ -29,7 +29,6 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++20",
 				"${workspaceFolder}\\src\\Tests\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\Tests\\tests.exe",
