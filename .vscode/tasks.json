@@ -8,7 +8,7 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++20",
+				"-std=c++17",
 				"${workspaceFolder}\\src\\jet\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\app.exe"
@@ -29,6 +29,7 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
+				"-std=c++20",
 				"${workspaceFolder}\\src\\Tests\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\Tests\\tests.exe",
