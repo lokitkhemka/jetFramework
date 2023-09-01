@@ -4,6 +4,31 @@
 #include <cmath>
 #include <limits>
 
+//! Zero size_t
+constexpr size_t kZeroSize = 0;
+
+//! Zero ssize_t
+constexpr ssize_t kZeroSSize = 0;
+
+//! Zero for type T.
+template<typename T>
+inline T Zero()
+{
+    return 0;
+}
+
+//! One size_t.
+constexpr size_t kOneSize = 1;
+
+//! One ssize_t.
+constexpr ssize_t kOneSSize = 1;
+
+//! One for type T.
+template <typename T>
+constexpr T One() {
+    return 1;
+}
+
 //! Float-type epsilon.
 constexpr float kEpsilonF = std::numeric_limits<float>::epsilon();
 
