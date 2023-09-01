@@ -131,4 +131,30 @@ TEST(Array1, ForEachIndex)
     });
 }
 
+TEST(Array1, ParallelForEach) {
+    jet::Array1<float> arr1(200);
+    arr1.ForEachIndex([&](size_t i) {
+        arr1[i] = static_cast<float>(200.f - i);
+    });
 
+    arr1.ParallelForEach([](float& val) {
+        val *= 2.f;
+    });
+
+    arr1.ForEachIndex([&](size_t i) {
+        float ans = 2.f * static_cast<float>(200.f - i);
+        EXPECT_FLOAT_EQ(ans, arr1[i]);
+    });
+}
+
+TEST(Array1, ParallelForEachIndex) {
+    jet::Array1<float> arr1(200);
+    arr1.ForEachIndex([&](size_t i) {
+        arr1[i] = static_cast<float>(200.f - i);
+    });
+
+    arr1.ParallelForEachIndex([&](size_t i) {
+        float ans = static_cast<float>(200.f - i);
+        EXPECT_EQ(ans, arr1[i]);
+    });
+}

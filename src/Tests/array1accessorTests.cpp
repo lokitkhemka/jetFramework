@@ -61,6 +61,38 @@ TEST(ArrayAccessor1, ForEachIndex)
     });
 }
 
+TEST(ArrayAccessor1, ParallelForEach) {
+    jet::Array1<float> arr1(200);
+    auto acc = arr1.Accessor();
+
+    acc.ForEachIndex([&](size_t i) {
+        arr1[i] = static_cast<float>(200.f - i);
+    });
+
+    acc.ParallelForEach([](float& val) {
+        val *= 2.f;
+    });
+
+    acc.ForEachIndex([&](size_t i) {
+        float ans = 2.f * static_cast<float>(200.f - i);
+        EXPECT_FLOAT_EQ(ans, arr1[i]);
+    });
+}
+
+TEST(ArrayAccessor1, ParallelForEachIndex) {
+    jet::Array1<float> arr1(200);
+    auto acc = arr1.Accessor();
+
+    acc.ForEachIndex([&](size_t i) {
+        arr1[i] = static_cast<float>(200.f - i);
+    });
+
+    acc.ParallelForEachIndex([&](size_t i) {
+        float ans = static_cast<float>(200.f - i);
+        EXPECT_EQ(ans, arr1[i]);
+    });
+}
+
 
 TEST(ConstArrayAccessor1, Constructors)
 {
@@ -120,3 +152,16 @@ TEST(ConstArrayAccessor1, ForEachIndex)
     });
 }
 
+TEST(ConstArrayAccessor1, ParallelForEachIndex) {
+    jet::Array1<float> arr1(200);
+    auto acc = arr1.ConstAccessor();
+
+    acc.ForEachIndex([&](size_t i) {
+        arr1[i] = static_cast<float>(200.f - i);
+    });
+
+    acc.ParallelForEachIndex([&](size_t i) {
+        float ans = static_cast<float>(200.f - i);
+        EXPECT_EQ(ans, arr1[i]);
+    });
+}

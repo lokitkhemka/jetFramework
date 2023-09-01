@@ -1,6 +1,8 @@
 #pragma once
 
 #include <macros.h>
+#include<parallel.h>
+#include<constants.h>
 #include "Arrays/array_accessor.h"
 
 namespace jet
@@ -102,9 +104,49 @@ namespace jet
         void ForEachIndex(Callback func) const;
 
 
+        //! \brief Iterates the array and invoke given \p func for each element in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes array's element as its input. The order of execution will
+        //! be non-deterministic since it runs in parallel.
+        //! Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6};
+        //! ArrayAccessor<int, 1> acc(6, data);
+        //! acc.ParallelForEach([](int& elem) {
+        //!     elem *= 2;
+        //! });
+        //! \endcode
+        //!
+        //! The parameter type of the callback function doesn't have to be T&, but
+        //! const T& or T can be used as well.
+        //!
+        template <typename Callback>
+        void ParallelForEach(Callback func);
 
-
-
+        //!
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes one parameter which is the index of the array. The order
+        //! of execution will be non-deterministic since it runs in parallel.
+        //! Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6};
+        //! ArrayAccessor<int, 1> acc(6, data);
+        //! acc.ParallelForEachIndex([](size_t i) {
+        //!     acc[i] *= 2;
+        //! });
+        //! \endcode
+        //!
+        template <typename Callback>
+        void ParallelForEachIndex(Callback func) const;
 
 
         //! Returns the reference of the i-th element.
@@ -206,9 +248,25 @@ namespace jet
         void ForEachIndex(Callback func) const;
 
 
-
-
-
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes one parameter which is the index of the array. The order
+        //! of execution will be non-deterministic since it runs in parallel.
+        //! Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6};
+        //! ConstArrayAccessor<int, 1> acc(6, data);
+        //! accessor.ParallelForEachIndex([](size_t i) {
+        //!     data[i] = acc[i] * acc[i];
+        //! });
+        //! \endcode
+        //!
+        template <typename Callback>
+        void ParallelForEachIndex(Callback func) const;
 
 
         //! Returns the const reference to i-th element.
@@ -334,6 +392,20 @@ namespace jet
             func(i);
     }
 
+    template <typename T>
+    template <typename Callback>
+    void ArrayAccessor<T, 1>::ParallelForEach(Callback func) {
+        ParallelFor(kZeroSize, Size(), [&](size_t i) {
+            func(At(i));
+        });
+    }
+
+    template <typename T>
+    template <typename Callback>
+    void ArrayAccessor<T, 1>::ParallelForEachIndex(Callback func) const {
+        ParallelFor(kZeroSize, Size(), func);
+    }
+
     template<typename T>
     T& ArrayAccessor<T,1>::operator[](size_t i){
         return _data[i];
@@ -422,6 +494,12 @@ namespace jet
         for (size_t i = 0; i < Size(); ++i) {
             func(i);
         }
+    }
+
+    template <typename T>
+    template <typename Callback>
+    void ConstArrayAccessor<T, 1>::ParallelForEachIndex(Callback func) const {
+        ParallelFor(kZeroSize, Size(), func);
     }
 
     template <typename T>
