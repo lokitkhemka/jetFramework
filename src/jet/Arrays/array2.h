@@ -211,7 +211,46 @@ namespace jet
         template <typename Callback>
         void ForEachIndex(Callback func) const;
 
-        ///TODO: Implement Parallel foreach methods
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func. The callback function takes array's element as its
+        //! input. The order of execution will be non-deterministic since it runs in
+        //! parallel. Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! Array<int, 2> array(100, 200, 4);
+        //! array.ParallelForEach([](int& elem) {
+        //!     elem *= 2;
+        //! });
+        //! \endcode
+        //!
+        //! The parameter type of the callback function doesn't have to be T&, but
+        //! const T& or T can be used as well.
+        //!
+        template <typename Callback>
+        void ParallelForEach(Callback func);
+
+        //!
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes two parameters which are the (i, j) indices of the array.
+        //! The order of execution will be non-deterministic since it runs in
+        //! parallel. Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! Array<int, 2> array(100, 200, 4);
+        //! array.ParallelForEachIndex([&](size_t i, size_t j) {
+        //!     array(i, j) *= 2;
+        //! });
+        //! \endcode
+        //!
+        template <typename Callback>
+        void ParallelForEachIndex(Callback func) const;
 
 
         //! Returns the reference to the i-th element, where i = x + (width * y)
@@ -496,7 +535,17 @@ namespace jet
         ConstAccessor().ForEachIndex(func);
     }
 
+    template <typename T>
+    template <typename Callback>
+    void Array<T, 2>::ParallelForEach(Callback func) {
+        Accessor().ParallelForEach(func);
+    }
 
+    template <typename T>
+    template <typename Callback>
+    void Array<T, 2>::ParallelForEachIndex(Callback func) const {
+        ConstAccessor().ParallelForEachIndex(func);
+    }
 
 
 
