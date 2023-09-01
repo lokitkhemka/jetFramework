@@ -6,6 +6,7 @@
 #include <utility>
 
 #include<macros.h>
+#include<parallel.h>
 
 
 namespace jet
@@ -162,7 +163,48 @@ namespace jet
         void ForEachIndex(Callback func) const;
 
 
-        //TODO: Implement parallel methods
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func. The callback function takes array's element as its
+        //! input. The order of execution will be non-deterministic since it runs in
+        //! parallel. Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+        //! ArrayAccessor<int, 3> acc(2, 3, 2, data);
+        //! acc.ParallelForEach([](int& elem) {
+        //!     elem *= 2;
+        //! });
+        //! \endcode
+        //!
+        //! The parameter type of the callback function doesn't have to be T&, but
+        //! const T& or T can be used as well.
+        //!
+        template <typename Callback>
+        void ParallelForEach(Callback func);
+
+        //!
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes two parameters which are the (i, j, k) indices of the
+        //! array. The order of execution will be non-deterministic since it runs in
+        //! parallel. Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+        //! ArrayAccessor<int, 3> acc(2, 3, 2, data);
+        //! acc.ParallelForEachIndex([&](size_t i, size_t j, size_t k) {
+        //!     acc(i, j, k) *= 2;
+        //! });
+        //! \endcode
+        //!
+        template <typename Callback>
+        void ParallelForEachIndex(Callback func) const;
 
         //! Returns the linear index of the given 3D coordinate (pt.x, pt.y, pt.z)
         size_t Index(const Point3UI& pt) const;
@@ -325,7 +367,25 @@ namespace jet
         void ForEachIndex(Callback func) const;
 
 
-        //TODO: Implement PARALLEL foreach implementation.
+        //! \brief Iterates the array and invoke given \p func for each index in
+        //!     parallel using multi-threading.
+        //!
+        //! This function iterates the array elements and invoke the callback
+        //! function \p func in parallel using multi-threading. The callback
+        //! function takes two parameters which are the (i, j, k) indices of the
+        //! array. The order of execution will be non-deterministic since it runs in
+        //! parallel. Below is the sample usage:
+        //!
+        //! \code{.cpp}
+        //! int data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+        //! ConstArrayAccessor<int, 3> acc(2, 3, 2, data);
+        //! acc.ParallelForEachIndex([&](size_t i, size_t j, size_t k) {
+        //!     acc(i, j, k) *= 2;
+        //! });
+        //! \endcode
+        //!
+        template <typename Callback>
+        void ParallelForEachIndex(Callback func) const;
 
 
         //! Returns the linear index of the given 3D coordinate (pt.x, pt.y, pt.z)
@@ -525,10 +585,21 @@ namespace jet
     }
 
 
+    template <typename T>
+    template <typename Callback>
+    void ArrayAccessor<T, 3>::ParallelForEach(Callback func) {
+        ParallelFor(kZeroSize, _size.x, kZeroSize, _size.y, kZeroSize, _size.z,
+            [&](size_t i, size_t j, size_t k) {
+                func(At(i, j, k));
+            });
+    }
 
-
-
-
+    template <typename T>
+    template <typename Callback>
+    void ArrayAccessor<T, 3>::ParallelForEachIndex(Callback func) const {
+        ParallelFor(
+            kZeroSize, _size.x, kZeroSize, _size.y, kZeroSize, _size.z, func);
+    }
 
 
     template<typename T>
@@ -719,7 +790,12 @@ namespace jet
         }
     }
 
-
+    template <typename T>
+    template <typename Callback>
+    void ConstArrayAccessor<T, 3>::ParallelForEachIndex(Callback func) const {
+        ParallelFor(
+            kZeroSize, _size.x, kZeroSize, _size.y, kZeroSize, _size.z, func);
+    }
 
 
     template <typename T>

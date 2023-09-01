@@ -205,3 +205,38 @@ TEST(Array3, ForEachIndex) {
         EXPECT_FLOAT_EQ(static_cast<float>(idx), arr1(i, j, k));
     });
 }
+
+TEST(Array3, ParallelForEach) {
+    Array3<float> arr1(
+        {{{ 1.f,  2.f,  3.f,  4.f},
+          { 5.f,  6.f,  7.f,  8.f},
+          { 9.f, 10.f, 11.f, 12.f}},
+         {{13.f, 14.f, 15.f, 16.f},
+          {17.f, 18.f, 19.f, 20.f},
+          {21.f, 22.f, 23.f, 24.f}}});
+
+    arr1.ParallelForEach([&](float& val) {
+        val *= 2.f;
+    });
+
+    arr1.ForEachIndex([&](size_t i, size_t j, size_t k) {
+        size_t idx = i + (4 * (j + 3 * k)) + 1;
+        float ans = 2.f * static_cast<float>(idx);
+        EXPECT_FLOAT_EQ(ans, arr1(i, j, k));
+    });
+}
+
+TEST(Array3, ParallelForEachIndex) {
+    Array3<float> arr1(
+        {{{ 1.f,  2.f,  3.f,  4.f},
+          { 5.f,  6.f,  7.f,  8.f},
+          { 9.f, 10.f, 11.f, 12.f}},
+         {{13.f, 14.f, 15.f, 16.f},
+          {17.f, 18.f, 19.f, 20.f},
+          {21.f, 22.f, 23.f, 24.f}}});
+
+    arr1.ParallelForEachIndex([&](size_t i, size_t j, size_t k) {
+        size_t idx = i + (4 * (j + 3 * k)) + 1;
+        EXPECT_FLOAT_EQ(static_cast<float>(idx), arr1(i, j, k));
+    });
+}
