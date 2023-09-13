@@ -33,6 +33,7 @@
 				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\VectorField\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Surface\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\Tests\\tests.exe",
 				"-I${workspaceFolder}\\src\\external\\googletest\\include",
