@@ -121,8 +121,8 @@
         for(int i = 0; i < 4; ++i)
         {
             auto CornerInLocal = ToLocal(BBoxInWorld.Corner(i));
-            BBoxInLocal.LowerCorner = std::min(BBoxInLocal.LowerCorner, CornerInLocal);
-            BBoxInLocal.UpperCorner = std::max(BBoxInLocal.UpperCorner, CornerInLocal);
+            BBoxInLocal.LowerCorner = Min(BBoxInLocal.LowerCorner, CornerInLocal);
+            BBoxInLocal.UpperCorner = Max(BBoxInLocal.UpperCorner, CornerInLocal);
         }
         return BBoxInLocal;
     }
@@ -153,8 +153,8 @@
         for(int i = 0; i < 4; ++i)
         {
             auto CornerInWorld = ToWorld(BBoxInLocal.Corner(i));
-            BBoxInWorld.LowerCorner = std::min(BBoxInWorld.LowerCorner, CornerInWorld);
-            BBoxInWorld.UpperCorner = std::max(BBoxInWorld.UpperCorner, CornerInWorld);
+            BBoxInWorld.LowerCorner = Min(BBoxInWorld.LowerCorner, CornerInWorld);
+            BBoxInWorld.UpperCorner = Max(BBoxInWorld.UpperCorner, CornerInWorld);
         }
 
         return BBoxInWorld;
