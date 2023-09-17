@@ -635,7 +635,7 @@ T Vector<T, 2>::DistanceTo(const Vector<T, 2>& other) const {
 
 template <typename T>
 T Vector<T, 2>::DistanceSquaredTo(const Vector<T, 2>& other) const {
-    return Sub(other).lengthSquared();
+    return Sub(other).LengthSquared();
 }
 
 template <typename T>

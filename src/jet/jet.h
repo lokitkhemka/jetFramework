@@ -21,4 +21,6 @@
             });
 #endif
 
-
+#ifndef UNUSED_VARAIBLE
+    #define UNUSED_VARAIBLE(x) ((void)x)
+#endif
