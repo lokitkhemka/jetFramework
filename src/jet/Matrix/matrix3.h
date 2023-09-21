@@ -357,7 +357,7 @@ namespace jet
 
     //! Returns a * b
     template<typename T>
-    Matrix3x3<T> operator*(const Matrix3x3<T>& a, const Vector3<T>& b);
+    Vector3<T> operator*(const Matrix3x3<T>& a, const Vector3<T>& b);
 
     //! Returns a * b
     template<typename T>
