@@ -22,6 +22,17 @@
       "cwd": "${workspaceFolder}/bin/",
       "environment": [],
       "console":"integratedTerminal",
-  }
+  },
+  {
+    "name": "(Windows) Launch Performance Tests",
+    "type": "cppvsdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/bin/PerfTests/tests.exe",
+    "args": [],
+    "stopAtEntry": false,
+    "cwd": "${workspaceFolder}/bin/",
+    "environment": [],
+    "console":"integratedTerminal",
+}
     ]
   }

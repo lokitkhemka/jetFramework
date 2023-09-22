@@ -30,6 +30,7 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${workspaceFolder}\\src\\Tests\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\VectorField\\*.cpp",
@@ -39,6 +40,38 @@
 				"${workspaceFolder}\\src\\jet\\Geometry\\Box\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\Tests\\tests.exe",
+				"-I${workspaceFolder}\\src\\external\\googletest\\include",
+				"-I${workspaceFolder}\\src\\jet",
+				"-L${workspaceFolder}\\src\\external\\googletest\\lib",
+				"-lgtest", "-lgtest_main"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+		{
+			"type": "cppbuild",
+			"label": "Clang Performance Test Build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${workspaceFolder}\\src\\PerfTests\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\VectorField\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Surface\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Sphere\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Plane\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Box\\*.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\PerfTests\\tests.exe",
 				"-I${workspaceFolder}\\src\\external\\googletest\\include",
 				"-I${workspaceFolder}\\src\\jet",
 				"-L${workspaceFolder}\\src\\external\\googletest\\lib",
