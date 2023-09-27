@@ -8,9 +8,9 @@
 namespace jet
 {
     //!
-    //! \brief 2-D Point Class
+    //! \brief 3-D Point Class
     //!
-    //! This class defines simple 2-D point data.
+    //! This class defines simple 3-D point data.
     //!
     //! \tparam T - Type of the Element.
     //!
