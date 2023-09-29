@@ -35,7 +35,7 @@
         //! Transforms a point in world coordinate to the local frame.
         Vector2D ToLocal(const Vector2D& PointInWorld) const;
 
-        //! Transofmrs a direction in work coordiante to the local frame.
+        //! Transforms a direction in work coordiante to the local frame.
         Vector2D ToLocalDirection(const Vector2D& DirInWorld) const;
 
         //! transforms a ray in from world coordinate to the local frame.

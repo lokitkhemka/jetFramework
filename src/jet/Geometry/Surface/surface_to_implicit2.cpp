@@ -18,6 +18,10 @@ namespace jet
         return _Surface;
     }
 
+    //WARNING: This method computes the ClosestPoint of the explicit surface in the world frame.
+    //This is true for all the methods in SurfaceToImplicit classes.
+    //A Better way to think about it is the Local Frame for Implicit Surface is actually
+    // the World frame of the explicit surface.
     Vector2D SurfaceToImplicit2::ClosestPointLocal(const Vector2D& otherPoint) const
     {
         return _Surface->ClosestPoint(otherPoint);
