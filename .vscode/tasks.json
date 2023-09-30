@@ -32,6 +32,8 @@
 				"${workspaceFolder}\\src\\Tests\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Logging\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Animation\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\VectorField\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\Surface\\*.cpp",

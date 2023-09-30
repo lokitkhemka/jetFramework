@@ -1,6 +1,7 @@
 #pragma once
 
 #include <macros.h>
+#include <Logging/logging.h>
 
 #ifdef JET_WINDOWS
 #   define WIN32_LEAN_AND_MEAN
