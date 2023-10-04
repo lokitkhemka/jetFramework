@@ -91,6 +91,48 @@
 			],
 			"group": "build",
 			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+		{
+			"type": "cppbuild",
+			"label": "Clang Manual Test Build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${workspaceFolder}\\src\\ManualTests\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Logging\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Animation\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Field\\VectorField\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Surface\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Sphere\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Plane\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\TriangleMesh\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\ImplicitSurface\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\Box\\*.cpp",
+				"${workspaceFolder}\\src\\external\\obj\\obj\\*.cpp",
+				"${workspaceFolder}\\src\\external\\cnpy\\*.cpp",
+				"${workspaceFolder}\\src\\external\\pystring\\*.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\ManualTests\\tests.exe",
+				"-I${workspaceFolder}\\src\\external\\googletest\\include",
+				"-I${workspaceFolder}\\src\\external\\zlib\\include",
+				"-I${workspaceFolder}\\src\\jet",
+				"-I${workspaceFolder}\\src\\external",
+				"-L${workspaceFolder}\\src\\external\\googletest\\lib",
+				"-L${workspaceFolder}\\src\\external\\zlib\\lib",
+				"-lgtest", "-lgtest_main", "-lzlib"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
 		}
 	]
 }

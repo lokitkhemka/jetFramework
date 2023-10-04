@@ -61,9 +61,9 @@ namespace jet
     protected:
         //! \brief The implementation of this function should update the animation state for given Frame instance \p frame.
         //!
-        //! This funciton is called from Animation::Update when state of this class instance needs to be
+        //! This function is called from Animation::Update when state of this class instance needs to be
         //! updated. The inherited class should override this funciton.
-        virtual void  OnUpdate(const Frame& frame) = 0;
+        virtual void OnUpdate(const Frame& frame) = 0;
 
     };
 

@@ -52,7 +52,7 @@ namespace jet
         Timer timer;
 
         JET_INFO << "Begin Updating Frame: " << frame.Index 
-                    << "TimeIntervalInSeconds: " << frame.TimeIntervalInSeconds
+                    << " TimeIntervalInSeconds: " << frame.TimeIntervalInSeconds
                     << "(1/" << 1.0 / frame.TimeIntervalInSeconds
                     <<") seconds";
         OnUpdate(frame);

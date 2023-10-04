@@ -33,6 +33,17 @@
     "cwd": "${workspaceFolder}/bin/",
     "environment": [],
     "console":"integratedTerminal",
-}
-    ]
+  },
+  {
+    "name": "(Windows) Launch Manual Tests",
+    "type": "cppvsdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/bin/ManualTests/tests.exe",
+    "args": [],
+    "stopAtEntry": false,
+    "cwd": "${workspaceFolder}/bin/",
+    "environment": [],
+    "console":"integratedTerminal",
+  }
+  ]
   }
