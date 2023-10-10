@@ -293,7 +293,7 @@ namespace jet{
     }
 
     template<typename T>
-    const T& Array<T,1>::At(size_t t) const
+    const T& Array<T,1>::At(size_t i) const
     {
         assert(i<Size());
         return _data[i];

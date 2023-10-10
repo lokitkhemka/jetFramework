@@ -1298,7 +1298,7 @@ bool Matrix<T, 4, 4>::IsSimilar(const Matrix& m, double tol) const {
     template<typename T>
     Matrix4x4<T> operator*(T a, const Matrix4x4<T>& b)
     {
-        return b.RMul(b);
+        return b.RMul(a);
     }
 
     template<typename T>

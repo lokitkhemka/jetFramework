@@ -79,5 +79,6 @@
         "random": "cpp"
     },
     "cmake.sourceDirectory": "D:/CPPProjects/Jet Framework/src/Tests",
-    "C_Cpp.default.compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe"
+    "C_Cpp.default.compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+    "cmake.configureOnOpen": true
 }

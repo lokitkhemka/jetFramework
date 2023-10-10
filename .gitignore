@@ -1,1 +1,3 @@
 bin/
+build.zig
+zig-cache/

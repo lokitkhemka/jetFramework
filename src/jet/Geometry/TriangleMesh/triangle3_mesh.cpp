@@ -1,6 +1,6 @@
 #include<jet.h>
 #include<parallel.h>
-#include<obj/obj/obj_parser.hpp>
+#include<obj/obj_parser.hpp>
 #include"triangle3_mesh.h"
 #include<algorithm>
 #include<limits>

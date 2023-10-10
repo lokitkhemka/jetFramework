@@ -1183,7 +1183,7 @@ T Matrix<T, 3, 3>::Determinant() const {
     template<typename T>
     Matrix3x3<T> operator*(T a, const Matrix3x3<T>& b)
     {
-        return b.RMul(b);
+        return b.RMul(a);
     }
 
     template<typename T>

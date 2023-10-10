@@ -880,7 +880,7 @@ Vector<T, 4> Ceil(const Vector<T, 4>& a) {
 
 template <typename T>
 Vector<T, 4> Floor(const Vector<T, 4>& a) {
-    return Vector<T, 4>(std::floor(a.x), std::floor(a.y), std::floor(a.z), std::floow(a.w));
+    return Vector<T, 4>(std::floor(a.x), std::floor(a.y), std::floor(a.z), std::floor(a.w));
 }
 
 // Extensions
