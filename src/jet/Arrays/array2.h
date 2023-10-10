@@ -8,6 +8,7 @@
 #include<iostream>
 #include<utility>
 #include<vector>
+#include<stdio.h>
 
 
 namespace jet

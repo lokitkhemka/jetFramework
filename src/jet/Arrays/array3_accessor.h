@@ -487,7 +487,7 @@ namespace jet
     template<typename T>
     const T& ArrayAccessor<T,3>::At(size_t i, size_t j, size_t k) const
     {
-        JET_ASSERT(i < _size.x && j<_size.y && k<_size.k);
+        JET_ASSERT(i < _size.x && j<_size.y && k<_size.z);
         return _data[i + _size.x * (j + _size.y * k) ];
     }
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <stdio.h>
 namespace jet{
     //! \brief Array class provides a Generic N-dimension array class interface, where N = 1,2,3
     //!
