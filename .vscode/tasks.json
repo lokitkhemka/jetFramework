@@ -42,11 +42,13 @@
 				"${workspaceFolder}\\src\\jet\\Geometry\\TriangleMesh\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\ImplicitSurface\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\Box\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\IO\\Serialization\\*.cpp",
 				"${workspaceFolder}\\src\\external\\obj\\obj\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\Tests\\tests.exe",
 				"-I${workspaceFolder}\\src\\external\\googletest\\include",
 				"-I${workspaceFolder}\\src\\external\\obj",
+				"-I${workspaceFolder}\\src\\external",
 				"-I${workspaceFolder}\\src\\jet",
 				"-L${workspaceFolder}\\src\\external\\googletest\\lib",
 				"-lgtest", "-lgtest_main"
