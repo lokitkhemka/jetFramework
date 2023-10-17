@@ -48,7 +48,7 @@ namespace jet
 
     inline Vector3D FbsToJet(const fbs::Vector3D& vec)
     {
-        return Vector3D(vec.x(), vec.y(). vec.z());
+        return Vector3D(vec.x(), vec.y(), vec.z());
     }
 
 

@@ -428,7 +428,7 @@ namespace jet
     template<typename T>
     ArrayAccessor<T,1>::operator ConstArrayAccessor<T,1>() const
     {
-        return ConstArrayAccesdsor<T,1>(*this);
+        return ConstArrayAccessor<T,1>(*this);
     }
 
 
