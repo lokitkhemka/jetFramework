@@ -1,7 +1,7 @@
 #include <jet.h>
 #include <IO/Serialization/fbs_helpers.h>
 
-#include <IO/Serialization/generated/point_hash_grid_search2_generated.h>
+#include <IO/Serialization/generated/point_hash_grid_searcher2_generated.h>
 
 #include <Arrays/array1.h>
 #include "point2_hash_grid_search.h"
@@ -218,11 +218,11 @@ namespace jet
         auto fbsPoints = builder.CreateVectorOfStructs(points.data(), points.size());
 
         //Copy Buckets
-        std::vector<flatbuffers::Offset<fbs::PointHashGridSearchBucket2>> buckets;
+        std::vector<flatbuffers::Offset<fbs::PointHashGridSearcherBucket2>> buckets;
         for (const auto& bucket: _Buckets)
         {
             std::vector<uint64_t> bucket64(bucket.begin(), bucket.end());
-            flatbuffers::Offset<fbs::PointHashGridSearchBucket2> fbsBucket = fbs::CreatePointHashGridSearchBucket2(
+            flatbuffers::Offset<fbs::PointHashGridSearcherBucket2> fbsBucket = fbs::CreatePointHashGridSearcherBucket2(
                                                         builder, builder.CreateVector(bucket64.data(), bucket64.size()));
             
             buckets.push_back(fbsBucket);
@@ -231,7 +231,7 @@ namespace jet
         auto fbsBuckets = builder.CreateVector(buckets);
 
         //Copy the searcher
-        auto fbsSearcher = fbs::CreatePointHashGridSearch2(builder, _GridSpacing, &fbsResolution, fbsPoints,
+        auto fbsSearcher = fbs::CreatePointHashGridSearcher2(builder, _GridSpacing, &fbsResolution, fbsPoints,
                                                 fbsBuckets);
 
         builder.Finish(fbsSearcher);
@@ -246,7 +246,7 @@ namespace jet
 
     void PointHashGridSearch2::Deserialize(const std::vector<uint8_t>& buffer)
     {
-        auto fbsSearcher = fbs::GetPointHashGridSearch2(buffer.data());
+        auto fbsSearcher = fbs::GetPointHashGridSearcher2(buffer.data());
 
         //Copy Simple Data.
         auto res = FbsToJet(*fbsSearcher->resolution());

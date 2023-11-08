@@ -33,6 +33,7 @@
 				"${workspaceFolder}\\src\\jet\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\NeighborhoodSearch\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\ParticleSim\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Logging\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Animation\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",

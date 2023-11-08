@@ -1,7 +1,6 @@
 namespace jet.fbs;
 
-table FlatData
-{
+table FlatData {
     data:[ubyte];
 }
 

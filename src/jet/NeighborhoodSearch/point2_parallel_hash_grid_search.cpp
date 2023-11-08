@@ -1,6 +1,6 @@
 #include <jet.h>
 #include <IO/Serialization/fbs_helpers.h>
-#include <IO/Serialization/generated/point_parallel_hash_grid_search2_generated.h>
+#include <IO/Serialization/generated/point_parallel_hash_grid_searcher2_generated.h>
 
 #include <parallel.h>
 #include <constants.h>
@@ -94,8 +94,11 @@ namespace jet
 
         ParallelFor((size_t) 1, NumPoints,
                 [&](size_t i){
-                    _StartIndexTable[_Keys[i]] = i;
-                    _EndIndexTable[_Keys[i - 1]] = i;
+                    if (_Keys[i] > _Keys[i-1])
+                    {
+                        _StartIndexTable[_Keys[i]] = i;
+                        _EndIndexTable[_Keys[i - 1]] = i;
+                    }
                 });
 
         size_t SumNumPointsPerBucket = 0;
@@ -304,7 +307,7 @@ namespace jet
         auto fbsSortedIndices = builder.CreateVector(sortedIndices.data(), sortedIndices.size());
 
         //Copy the Search instance.
-        auto fbsSearch = fbs::CreatePointParallelHashGridSearch2(
+        auto fbsSearch = fbs::CreatePointParallelHashGridSearcher2(
                             builder,
                             _GridSpacing,
                             &fbsResolution,
@@ -326,7 +329,7 @@ namespace jet
 
     void PointParallelHashGridSearch2::Deserialize(const std::vector<uint8_t>& buffer)
     {
-        auto fbsSearch = fbs::GetPointParallelHashGridSearch2(buffer.data());
+        auto fbsSearch = fbs::GetPointParallelHashGridSearcher2(buffer.data());
 
         //Copy Simple Data
         auto res = FbsToJet(*fbsSearch->resolution());

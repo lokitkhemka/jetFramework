@@ -81,7 +81,8 @@
         "span": "cpp",
         "stack": "cpp"
     },
-    "cmake.sourceDirectory": "D:/CPPProjects/Jet Framework/src/Tests",
+    "cmake.sourceDirectory": "I:/CPPProjects/JetFramework/src/external/cnpy",
     "C_Cpp.default.compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "zig.initialSetupDone": false
 }
