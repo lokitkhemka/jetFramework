@@ -43,6 +43,7 @@
 				"${workspaceFolder}\\src\\jet\\Geometry\\Plane\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\TriangleMesh\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\ImplicitSurface\\*.cpp",
+				"${workspaceFolder}\\src\\jet\\Geometry\\PointGenerator\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Geometry\\Box\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\IO\\Serialization\\*.cpp",
 				"${workspaceFolder}\\src\\external\\obj\\obj\\*.cpp",

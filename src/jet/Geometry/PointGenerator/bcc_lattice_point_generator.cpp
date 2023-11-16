@@ -3,6 +3,26 @@
 
 namespace jet
 {
+    BCCLatticePointGenerator::BCCLatticePointGenerator() 
+    {}
+
+    BCCLatticePointGenerator::~BCCLatticePointGenerator() 
+    {}
+
+    void BCCLatticePointGenerator::Generate(
+        const BoundingBox3D& boundingBox,
+        double spacing,
+        Array1<Vector3D>* points) const 
+    {
+        ForEachPoint(
+            boundingBox,
+            spacing,
+            [&points](const Vector3D& point) {
+                points->Append(point);
+                return true;
+            });
+    }
+
     void BCCLatticePointGenerator::ForEachPoint(
         const BoundingBox3D& boundingBox, double spacing,
         const std::function<bool(const Vector3D&)>& callback) const
