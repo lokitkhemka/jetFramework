@@ -144,7 +144,16 @@ namespace jet
                 Vector3D Direction = _Points[j] - origin;
                 double DistanceSq = Direction.LengthSquared();
                 if (DistanceSq <= QueryRadiusSq)
+                {
+                    double distance = 0.0;
+                    if (DistanceSq > 0)
+                    {
+                        distance = std::sqrt(DistanceSq);
+                        Direction /= distance;
+                    }
                     callback(_SortedIndices[j], _Points[j]);
+
+                }
             }
         }
     }
@@ -271,17 +280,17 @@ namespace jet
         
         if ((OriginIndex.z + 0.5f) * _GridSpacing <= position.z)
         {
-            NearbyBucketIndices[1].y += 1;
-            NearbyBucketIndices[3].y += 1;
-            NearbyBucketIndices[5].y += 1;
-            NearbyBucketIndices[7].y += 1;
+            NearbyBucketIndices[1].z += 1;
+            NearbyBucketIndices[3].z += 1;
+            NearbyBucketIndices[5].z += 1;
+            NearbyBucketIndices[7].z += 1;
         }
         else
         {
-            NearbyBucketIndices[1].y -= 1;
-            NearbyBucketIndices[3].y -= 1;
-            NearbyBucketIndices[5].y -= 1;
-            NearbyBucketIndices[7].y -= 1;
+            NearbyBucketIndices[1].z -= 1;
+            NearbyBucketIndices[3].z -= 1;
+            NearbyBucketIndices[5].z -= 1;
+            NearbyBucketIndices[7].z -= 1;
         }
 
         for (int i = 0; i < 8; ++i)
