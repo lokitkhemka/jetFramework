@@ -3,3 +3,4 @@ bin/PerfTests
 bin/Tests
 build.zig
 zig-cache/
+manual_test_render/*

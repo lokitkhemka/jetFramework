@@ -124,6 +124,7 @@
 				"${workspaceFolder}\\bin\\ManualTests\\tests.exe",
 				"-I${workspaceFolder}\\src\\external\\googletest\\include",
 				"-I${workspaceFolder}\\src\\external\\zlib\\include",
+                "-I${workspaceFolder}\\src\\external\\obj",
 				"-I${workspaceFolder}\\src\\jet",
 				"-I${workspaceFolder}\\src\\external",
 				"-L${workspaceFolder}\\src\\external\\googletest\\lib",

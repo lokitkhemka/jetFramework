@@ -171,7 +171,7 @@ namespace jet
         //! \return Neighbor Lists.
         const std::vector<std::vector<size_t>>& NeighborLists() const;
 
-        //! Builds Neighbor Search Instace with given search radius.
+        //! Builds Neighbor Search Instance with given search radius.
         void BuildNeighborSearch(double MaxSearchRadius);
 
         //! Builds NeighborLists with given search radius.
