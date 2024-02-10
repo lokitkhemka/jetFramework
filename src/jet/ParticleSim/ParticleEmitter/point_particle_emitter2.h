@@ -70,6 +70,7 @@ namespace jet
     //! \brief Front-end to create PointParticleEmitter2 object instance.
     class PointParticleEmitter2::Builder final
     {
+    public:
         //! Returns builder with origin
         Builder& WithOrigin(const Vector2D& origin);
 

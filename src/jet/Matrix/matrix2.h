@@ -351,7 +351,7 @@ namespace jet
 
     //! Returns a * b
     template<typename T>
-    Matrix2x2<T> operator*(const Matrix2x2<T>& a, const Vector2<T>& b);
+    Vector2<T> operator*(const Matrix2x2<T>& a, const Vector2<T>& b);
 
     //! Returns a * b
     template<typename T>
