@@ -1,5 +1,3 @@
-// Copyright (c) 2016 Doyub Kim
-
 #include "manual_tests.h"
 
 #include <Arrays/array1.h>

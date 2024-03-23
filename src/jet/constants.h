@@ -17,6 +17,18 @@ inline T Zero()
     return 0;
 }
 
+//! Zero for float.
+template <>
+inline float Zero<float>() {
+    return 0.f;
+}
+
+//! Zero for double.
+template <>
+inline double Zero<double>() {
+    return 0.0;
+}
+
 //! One size_t.
 constexpr size_t kOneSize = 1;
 
@@ -195,3 +207,12 @@ template <>
 constexpr double InvTwoPi<double>() {
     return kInvTwoPiD;
 }
+
+//! Gravity.
+constexpr double kGravity = -9.8;
+
+//! Water Density
+constexpr double kWaterDensity = 1000.0;
+
+//! Speed of sound in water at 20 degrees Celsius.
+constexpr double kSpeedSound = 1482.0;

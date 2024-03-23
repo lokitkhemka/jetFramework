@@ -135,10 +135,10 @@ inline void CreateDir(const std::string& dirname)
         void SaveParticleDataXy( \
             const std::shared_ptr<ParticleSystem>& particles, \
             unsigned int frameNum) { \
-            size_t n = particles->numberOfParticles(); \
+            size_t n = particles->NumberOfParticles(); \
             Array1<double> x(n); \
             Array1<double> y(n); \
-            auto positions = particles->positions(); \
+            auto positions = particles->Positions(); \
             for (size_t i = 0; i < n; ++i) { \
                 x[i] = positions[i].x; \
                 y[i] = positions[i].y; \

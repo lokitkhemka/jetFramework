@@ -86,7 +86,7 @@ namespace jet
 
     bool Collider2::IsPenetrating(const ColliderQueryResult& colliderPoint, const Vector2D& position, double radius)
     {
-        // If the new candidate position of the aprticle is on the other side of surface or the new distance to the
+        // If the new candidate position of the particle is on the other side of surface or the new distance to the
         // surface is less than the particle's radius.
         return (position - colliderPoint.Point).Dot(colliderPoint.Normal) < 0.0 || colliderPoint.Distance < radius;
     }
