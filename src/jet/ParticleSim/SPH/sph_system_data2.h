@@ -63,6 +63,12 @@ namespace jet
 
         //! Returns the target density of the particle system.
         double TargetDensity() const;
+        
+        //! Sets the target particle spacing in meters
+        void SetTargetSpacing(double spacing);
+
+        //! Returns the target particle spacing in meters
+        double TargetSpacing() const;
 
         //! \brief Sets the relative kernel radius.
         //!
