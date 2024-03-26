@@ -1,10 +1,13 @@
-#include <manual_tests.h>
+#include "manual_tests.h"
 
 #include <Geometry/Box/box2.h>
 #include <Geometry/Plane/plane2.h>
 #include <ParticleSim/Collision/rigid_body2_collider.h>
 #include <ParticleSim/SPH/sph_solver2.h>
 #include <Geometry/Surface/surface_to_implicit2.h>
+#include <Geometry/Sphere/sphere2.h>
+#include <Geometry/PointGenerator/volume_particle_emitter2.h>
+#include <Geometry/ImplicitSurface/implicit_surface2_set.h>
 
 
 using namespace jet;
@@ -26,10 +29,10 @@ JET_BEGIN_TEST_F(SPHSolver2, WaterDrop) {
 
     // Initialize source
     ImplicitSurfaceSet2Ptr surfaceSet = std::make_shared<ImplicitSurfaceSet2>();
-    surfaceSet->addExplicitSurface(
+    surfaceSet->AddExplicitSurface(
         std::make_shared<Plane2>(
             Vector2D(0, 1), Vector2D(0, 0.25 * domain.Height())));
-    surfaceSet->addExplicitSurface(
+    surfaceSet->AddExplicitSurface(
         std::make_shared<Sphere2>(
             domain.MidPoint(), 0.15 * domain.Width()));
 

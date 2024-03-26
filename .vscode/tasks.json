@@ -114,6 +114,7 @@
 				"${workspaceFolder}\\src\\jet\\ParticleSim\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\ParticleSim\\Collision\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\ParticleSim\\ParticleEmitter\\*.cpp",
+                "${workspaceFolder}\\src\\jet\\ParticleSim\\SPH\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Logging\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Animation\\*.cpp",
 				"${workspaceFolder}\\src\\jet\\Field\\ScalarField\\*.cpp",
